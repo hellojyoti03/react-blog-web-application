@@ -13,6 +13,7 @@ import {
 	MDBDropdownItem,
 	MDBContainer,
 } from "mdb-react-ui-kit";
+import { useNavigate, Link } from "react-router-dom";
 import { useTheme } from "../provider/ThemeProvider";
 const responsive = {
 	desktop: {
@@ -33,6 +34,7 @@ const responsive = {
 };
 
 function Header() {
+	const navigate = useNavigate();
 	const { lightTheme, darkTheme } = useTheme();
 	const [isChecked, setIsChecked] = useState(false);
 
@@ -64,12 +66,78 @@ function Header() {
 			</ul>
 		);
 	};
+
+	let arr = [
+		{
+			title: "JAVA",
+			action: [
+				{ title: "main-0", action: [{ title: "sub-0", action: [{ title: "sub-sub-0", action: [] }] }] },
+				{ title: "main-1", action: [] },
+			],
+		},
+		{
+			title: "JAVA",
+			action: [
+				{ title: "main-0", action: [{ title: "sub-0", action: [{ title: "sub-sub-0", action: [] }] }] },
+				{ title: "main-1", action: [] },
+			],
+		},
+		{
+			title: "JAVA",
+			action: [
+				{ title: "main-0", action: [{ title: "sub-0", action: [{ title: "sub-sub-0", action: [] }] }] },
+				{ title: "main-1", action: [] },
+			],
+		},
+	];
+
+	const renderBlogHeader = (action, sub = false) => {
+		console.log(action, "action");
+		// if (sub) {
+		// 	return action.map((item) => (
+		// 		<ul className="dropdown-menu dropdown-submenu">
+		// 			{item.action.length ? renderBlogHeader(action, true) : renderBlogHeader(action, false)}
+		// 		</ul>
+		// 	));
+		// }
+		if (action.length) {
+			return action.map((item) => (
+				<MDBDropdownItem>
+					<Link to="/course" className="course-nav-menu">
+						{item.action.length ? (
+							<>
+								{item.title}
+								&raquo;{" "}
+							</>
+						) : (
+							<>{item.title}</>
+						)}
+					</Link>
+					{item.action.length ? (
+						<>
+							<ul className="dropdown-menu dropdown-submenu">{renderBlogHeader(item.action)}</ul>
+						</>
+					) : (
+						<></>
+					)}
+				</MDBDropdownItem>
+			));
+		}
+	};
 	return (
 		<header>
 			<div className="header-group">
 				<img src="https://codetheweb.blog/assets/img/icon2.png" />
 				<div className="course-list">
-					<MDBDropdown className="md-dropdown">
+					{arr.map((blog) => {
+						return (
+							<MDBDropdown className="md-dropdown">
+								<MDBDropdownToggle className="md-dropdown-toggle">{blog.title}</MDBDropdownToggle>
+								<MDBDropdownMenu>{renderBlogHeader(blog.action)}</MDBDropdownMenu>
+							</MDBDropdown>
+						);
+					})}
+					{/* <MDBDropdown className="md-dropdown">
 						<MDBDropdownToggle className="md-dropdown-toggle">Course</MDBDropdownToggle>
 						<MDBDropdownMenu>
 							<MDBDropdownItem>
@@ -127,7 +195,7 @@ function Header() {
 								</ul>
 							</MDBDropdownItem>
 						</MDBDropdownMenu>
-					</MDBDropdown>
+					</MDBDropdown> */}
 				</div>
 				<div className="auth">
 					<div>

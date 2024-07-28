@@ -105,7 +105,7 @@ header nav {
   overflow: hidden;
   position: relative; */
 
-	background-color: #00bef0;
+	background-color: #b692c2;
 }
 .react-multi-carousel-dot-list {
 	display: none !important;
@@ -148,29 +148,14 @@ header .auth button {
 	font-weight: bold;
 	font-size: 10px;
 	border-radius: 10px;
-	background: rgb(64, 192, 87);
+	background: #b692c2;
 	transition: all 0.2s;
 	border-radius: 3px;
 	cursor: pointer;
 }
 
 header .auth button:hover {
-	background-image: linear-gradient(
-		to right,
-		rgb(250, 82, 82),
-		rgb(250, 82, 82) 16.65%,
-		rgb(190, 75, 219) 16.65%,
-		rgb(190, 75, 219) 33.3%,
-		rgb(76, 110, 245) 33.3%,
-		rgb(76, 110, 245) 49.95%,
-		rgb(64, 192, 87) 49.95%,
-		rgb(64, 192, 87) 66.6%,
-		rgb(250, 176, 5) 66.6%,
-		rgb(250, 176, 5) 83.25%,
-		rgb(253, 126, 20) 83.25%,
-		rgb(253, 126, 20) 100%,
-		rgb(250, 82, 82) 100%
-	);
+	background-image: #b692c2;
 	animation: var(--timing) linear dance6123 infinite;
 	transform: scale(1.1) translateY(-1px);
 }
@@ -447,8 +432,10 @@ a {
 .dropdown-menu .dropdown-submenu {
 	display: none;
 	position: absolute;
-	left: 100%;
-	top: -7px;
+	/* left: 100%;
+	top: -7px; */
+	top: 18px;
+	left: 70px;
 }
 .dropdown-menu .dropdown-submenu-left {
 	right: 100%;

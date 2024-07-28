@@ -32,7 +32,7 @@ function AuthProvider({ children }) {
 		<React.Fragment value={{ isLoggedIn, user, token, login, logout }}>
 			{children}
 			<Modal
-				isOpen={modalIsOpen}
+				isOpen={false}
 				onRequestClose={closeModal}
 				style={customStyles}
 				contentLabel="Example Modal">
